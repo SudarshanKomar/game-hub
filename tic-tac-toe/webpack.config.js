@@ -4,6 +4,7 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   mode: 'development',
+  entry: './src/index.js',
   output: {
     publicPath: 'http://localhost:3001/',
   },

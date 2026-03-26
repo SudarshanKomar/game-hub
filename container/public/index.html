@@ -6,31 +6,18 @@
     <title>Game Hub</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
-        body {
+        html, body {
             margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
         }
-        .navbar {
-            background-color: #333;
-            padding: 1rem;
-            color: white;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-            padding: 0.5rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .navbar a:hover {
-            background-color: #555;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        #root {
+            width: 100%;
+            min-height: 100vh;
         }
     </style>
 </head>
