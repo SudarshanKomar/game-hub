@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 const GRID_SIZE = 5;
 
 function DotsAndBoxes() {
+  const player1Name = localStorage.getItem('player1Name') || 'Player A';
+  const player2Name = localStorage.getItem('player2Name') || 'Player B';
+  
   const [horizontalLines, setHorizontalLines] = useState(
     Array(GRID_SIZE + 1).fill(null).map(() => Array(GRID_SIZE).fill(false))
   );
@@ -80,11 +83,14 @@ function DotsAndBoxes() {
         setWinner(winner);
         
         const gameScores = JSON.parse(localStorage.getItem('gameScores') || '[]');
+        const winnerName = winner === 0 ? 'Draw' : (winner === 1 ? player1Name : player2Name);
         gameScores.push({
           game: 'Dots and Boxes',
           player1Score: newScores.player1,
           player2Score: newScores.player2,
-          winner: winner === 0 ? 'Draw' : `Player ${winner}`,
+          player1: player1Name,
+          player2: player2Name,
+          winner: winnerName,
           timestamp: new Date().toISOString()
         });
         localStorage.setItem('gameScores', JSON.stringify(gameScores));
@@ -109,37 +115,39 @@ function DotsAndBoxes() {
   const LINE_WIDTH = 4;
 
   return (
-    <div style={{ textAlign: 'center', padding: '2rem' }}>
-      <h2>⬛ Dots and Boxes</h2>
+    <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', textAlign: 'center', padding: '2rem' }}>
+      <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '2rem', color: '#fff' }}>Dots and Boxes</h2>
       
-      <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center', gap: '3rem' }}>
+      <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center', gap: '3rem' }}>
         <div style={{ 
-          padding: '1rem', 
-          backgroundColor: currentPlayer === 1 ? '#e3f2fd' : '#fff',
-          borderRadius: '8px',
-          border: currentPlayer === 1 ? '2px solid #2196F3' : '2px solid transparent'
+          padding: '1.5rem', 
+          backgroundColor: currentPlayer === 1 ? '#1e3a8a' : '#1a1a1a',
+          borderRadius: '12px',
+          border: currentPlayer === 1 ? '2px solid #3b82f6' : '2px solid #404040',
+          transition: 'all 0.3s'
         }}>
-          <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#2196F3' }}>Player 1</div>
-          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{scores.player1}</div>
+          <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#60a5fa' }}>{player1Name}</div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff' }}>{scores.player1}</div>
         </div>
         <div style={{ 
-          padding: '1rem', 
-          backgroundColor: currentPlayer === 2 ? '#fff3e0' : '#fff',
-          borderRadius: '8px',
-          border: currentPlayer === 2 ? '2px solid #FF9800' : '2px solid transparent'
+          padding: '1.5rem', 
+          backgroundColor: currentPlayer === 2 ? '#7c2d12' : '#1a1a1a',
+          borderRadius: '12px',
+          border: currentPlayer === 2 ? '2px solid #f97316' : '2px solid #404040',
+          transition: 'all 0.3s'
         }}>
-          <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#FF9800' }}>Player 2</div>
-          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{scores.player2}</div>
+          <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#fb923c' }}>{player2Name}</div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff' }}>{scores.player2}</div>
         </div>
       </div>
 
       {gameOver && (
-        <div style={{ marginBottom: '1rem', fontSize: '20px', fontWeight: 'bold', color: '#4CAF50' }}>
-          {winner === 0 ? "It's a Draw!" : `Player ${winner} Wins!`}
+        <div style={{ marginBottom: '2rem', fontSize: '24px', fontWeight: 'bold', color: '#22c55e' }}>
+          {winner === 0 ? "It's a Draw!" : `${winner === 1 ? player1Name : player2Name} Wins!`}
         </div>
       )}
 
-      <div style={{ display: 'inline-block', position: 'relative', padding: '20px' }}>
+      <div style={{ display: 'inline-block', position: 'relative', padding: '20px', backgroundColor: '#1a1a1a', borderRadius: '16px', border: '2px solid #404040' }}>
         <svg width={GRID_SIZE * CELL_SIZE + DOT_SIZE} height={GRID_SIZE * CELL_SIZE + DOT_SIZE}>
           {Array.from({ length: GRID_SIZE + 1 }, (_, row) =>
             Array.from({ length: GRID_SIZE + 1 }, (_, col) => (
@@ -148,7 +156,7 @@ function DotsAndBoxes() {
                 cx={col * CELL_SIZE + DOT_SIZE / 2}
                 cy={row * CELL_SIZE + DOT_SIZE / 2}
                 r={DOT_SIZE / 2}
-                fill="#333"
+                fill="#9ca3af"
               />
             ))
           )}
@@ -161,7 +169,7 @@ function DotsAndBoxes() {
                 y1={rowIndex * CELL_SIZE + DOT_SIZE / 2}
                 x2={(colIndex + 1) * CELL_SIZE}
                 y2={rowIndex * CELL_SIZE + DOT_SIZE / 2}
-                stroke={isDrawn ? '#333' : '#ddd'}
+                stroke={isDrawn ? '#60a5fa' : '#404040'}
                 strokeWidth={LINE_WIDTH}
                 style={{ cursor: isDrawn || gameOver ? 'default' : 'pointer' }}
                 onClick={() => !isDrawn && handleLineClick('horizontal', rowIndex, colIndex)}
@@ -177,7 +185,7 @@ function DotsAndBoxes() {
                 y1={rowIndex * CELL_SIZE + DOT_SIZE}
                 x2={colIndex * CELL_SIZE + DOT_SIZE / 2}
                 y2={(rowIndex + 1) * CELL_SIZE}
-                stroke={isDrawn ? '#333' : '#ddd'}
+                stroke={isDrawn ? '#60a5fa' : '#404040'}
                 strokeWidth={LINE_WIDTH}
                 style={{ cursor: isDrawn || gameOver ? 'default' : 'pointer' }}
                 onClick={() => !isDrawn && handleLineClick('vertical', rowIndex, colIndex)}
@@ -194,7 +202,7 @@ function DotsAndBoxes() {
                   y={rowIndex * CELL_SIZE + DOT_SIZE + 2}
                   width={CELL_SIZE - DOT_SIZE - 4}
                   height={CELL_SIZE - DOT_SIZE - 4}
-                  fill={owner === 1 ? '#2196F3' : '#FF9800'}
+                  fill={owner === 1 ? '#3b82f6' : '#f97316'}
                   opacity="0.5"
                 />
               )
@@ -203,24 +211,37 @@ function DotsAndBoxes() {
         </svg>
       </div>
 
-      <div style={{ marginTop: '2rem' }}>
+      <div style={{ marginTop: '3rem' }}>
         <button
           onClick={resetGame}
           style={{
-            padding: '10px 20px',
+            padding: '12px 32px',
             fontSize: '16px',
-            backgroundColor: '#4CAF50',
+            backgroundColor: '#3b82f6',
             color: 'white',
             border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            transition: 'all 0.3s',
+            boxShadow: '0 4px 6px rgba(59, 130, 246, 0.3)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#2563eb';
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 6px 12px rgba(59, 130, 246, 0.4)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '#3b82f6';
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = '0 4px 6px rgba(59, 130, 246, 0.3)';
           }}
         >
           New Game
         </button>
       </div>
 
-      <div style={{ marginTop: '2rem', fontSize: '14px', color: '#666' }}>
+      <div style={{ marginTop: '2rem', fontSize: '14px', color: '#9ca3af' }}>
         <p>Click on lines between dots to draw them</p>
         <p>Complete a box to score a point and get another turn</p>
         <p>Player with most boxes wins!</p>

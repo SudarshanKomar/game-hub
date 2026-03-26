@@ -20,3 +20,5 @@ coverage
 .eslintcache
 .tmp
 .temp
+
+.agents

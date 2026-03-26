@@ -8,17 +8,28 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "clsx": "^2.1.1",
+    "css-loader": "^7.1.4",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.14.2",
+    "postcss-loader": "^8.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "single-spa": "^5.9.0",
-    "single-spa-react": "^4.6.0"
+    "single-spa-react": "^4.6.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/preset-react": "^7.18.0",
+    "autoprefixer": "^10.4.27",
     "babel-loader": "^9.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "postcss": "^8.5.8",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
     "webpack-dev-server": "^4.11.0"
