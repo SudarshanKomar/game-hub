@@ -11,7 +11,6 @@ Game Hub is a microfrontend-based gaming platform that allows two players to com
 - **Multiple Games**: Play Tic Tac Toe, Dots and Boxes, and Snake & Ladder
 - **Player Management**: Set custom player names that persist across all games
 - **Unified Leaderboard**: Track scores and statistics from all games in one place
-- **Dark Theme**: Modern, eye-friendly dark interface with proper color contrast
 - **Microfrontend Architecture**: Each game runs independently using Webpack Module Federation
 - **Responsive Design**: Works seamlessly across different screen sizes
 - **Local Storage**: Player names and game scores are saved locally
@@ -20,7 +19,7 @@ Game Hub is a microfrontend-based gaming platform that allows two players to com
 
 - **Frontend Framework**: React 18
 - **Build Tool**: Webpack 5 with Module Federation
-- **Styling**: Tailwind CSS with custom dark theme
+- **Styling**: Tailwind CSS
 - **Animations**: GSAP and Framer Motion
 - **Routing**: React Router DOM
 - **Package Manager**: npm
