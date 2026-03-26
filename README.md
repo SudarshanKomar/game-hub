@@ -135,11 +135,6 @@ npm run build:dotsandboxes
 npm run build:snakeladder
 npm run build:leaderboard
 ```
-
-## Deployment
-
-The application is configured for deployment on platforms like Vercel or Netlify. Each microfrontend can be deployed independently, but ensure all remoteEntry.js files are accessible at their configured URLs.
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -148,12 +143,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is open source and available under the MIT License.
 
-## Author
-
-Sudarshan Komar
-
 ## Acknowledgments
 
 - Built with React and Webpack Module Federation
 - UI components inspired by modern design principles
-- Game logic implemented from scratch
