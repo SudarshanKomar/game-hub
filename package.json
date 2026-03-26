@@ -1,0 +1,28 @@
+{
+  "name": "game-hub",
+  "version": "1.0.0",
+  "description": "Microfrontend-based 1v1 gaming platform with Tic Tac Toe, Dots and Boxes, Snake & Ladder, and Leaderboard",
+  "scripts": {
+    "install:all": "npm install && cd container && npm install && cd ../tic-tac-toe && npm install && cd ../dots-and-boxes && npm install && cd ../snake-ladder && npm install && cd ../leaderboard && npm install",
+    "start:container": "cd container && npm start",
+    "start:tictactoe": "cd tic-tac-toe && npm start",
+    "start:dotsandboxes": "cd dots-and-boxes && npm start",
+    "start:snakeladder": "cd snake-ladder && npm start",
+    "start:leaderboard": "cd leaderboard && npm start",
+    "start:all": "concurrently \"npm run start:container\" \"npm run start:tictactoe\" \"npm run start:dotsandboxes\" \"npm run start:snakeladder\" \"npm run start:leaderboard\"",
+    "build:all": "cd container && npm run build && cd ../tic-tac-toe && npm run build && cd ../dots-and-boxes && npm run build && cd ../snake-ladder && npm run build && cd ../leaderboard && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "keywords": [
+    "microfrontend",
+    "react",
+    "webpack",
+    "module-federation",
+    "single-spa",
+    "games"
+  ],
+  "author": "Game Hub Team",
+  "license": "MIT"
+}
