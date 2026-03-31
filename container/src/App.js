@@ -4,7 +4,7 @@ import { FallingPattern } from './components/ui/falling-pattern';
 import { Input } from './components/ui/input';
 import { FlippingCard } from './components/ui/flipping-card';
 import './index.css';
-import Fallback from './Fallback';
+import LoadingFallback from './LoadingFallback';
 
 const TicTacToe = lazy(() => import('ticTacToe/App').catch(err => {
   console.error('Failed to load TicTacToe:', err);
@@ -312,7 +312,7 @@ function App() {
             <Route 
               path="/tic-tac-toe" 
               element={
-                <Suspense fallback={<Fallback />}>
+                <Suspense fallback={<LoadingFallback />}>
                   <TicTacToe />
                 </Suspense>
               } 
@@ -320,7 +320,7 @@ function App() {
             <Route 
               path="/dots-and-boxes" 
               element={
-                <Suspense fallback={<Fallback />}>
+                <Suspense fallback={<LoadingFallback />}>
                   <DotsAndBoxes />
                 </Suspense>
               } 
@@ -328,7 +328,7 @@ function App() {
             <Route 
               path="/snake-ladder" 
               element={
-                <Suspense fallback={<Fallback />}>
+                <Suspense fallback={<LoadingFallback />}>
                   <SnakeLadder />
                 </Suspense>
               } 
@@ -336,7 +336,7 @@ function App() {
             <Route 
               path="/leaderboard" 
               element={
-                <Suspense fallback={<Fallback />}>
+                <Suspense fallback={<LoadingFallback />}>
                   <Leaderboard />
                 </Suspense>
               } 
