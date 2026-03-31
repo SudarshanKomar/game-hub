@@ -305,45 +305,43 @@ function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
-        <div style={{ minHeight: '100vh', backgroundColor: '#f0f0f0' }}>
+        <div style={{ minHeight: '100vh', backgroundColor: '#000' }}>
           <Navigation />
-          <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route 
-                path="/tic-tac-toe" 
-                element={
-                  <Suspense fallback={<Fallback />}>
-                    <TicTacToe />
-                  </Suspense>
-                } 
-              />
-              <Route 
-                path="/dots-and-boxes" 
-                element={
-                  <Suspense fallback={<Fallback />}>
-                    <DotsAndBoxes />
-                  </Suspense>
-                } 
-              />
-              <Route 
-                path="/snake-ladder" 
-                element={
-                  <Suspense fallback={<Fallback />}>
-                    <SnakeLadder />
-                  </Suspense>
-                } 
-              />
-              <Route 
-                path="/leaderboard" 
-                element={
-                  <Suspense fallback={<Fallback />}>
-                    <Leaderboard />
-                  </Suspense>
-                } 
-              />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route 
+              path="/tic-tac-toe" 
+              element={
+                <Suspense fallback={<Fallback />}>
+                  <TicTacToe />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/dots-and-boxes" 
+              element={
+                <Suspense fallback={<Fallback />}>
+                  <DotsAndBoxes />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/snake-ladder" 
+              element={
+                <Suspense fallback={<Fallback />}>
+                  <SnakeLadder />
+                </Suspense>
+              } 
+            />
+            <Route 
+              path="/leaderboard" 
+              element={
+                <Suspense fallback={<Fallback />}>
+                  <Leaderboard />
+                </Suspense>
+              } 
+            />
+          </Routes>
         </div>
       </BrowserRouter>
     </ErrorBoundary>
